@@ -4,29 +4,30 @@ using UnityEngine;
 
 public class GroundCheck : MonoBehaviour
 {
-	
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	GameObject Player;
 
-    // Update is called once per frame
-bool GroundChecker()
-{	
-	bool isGrounded = false;s
-	RaycastHit hit;
-	float distance = 1f;
-	Vector3 dir = new Vector3(0, -1);
+	void Start () 
+	{
+		Player = gameObject.transform.parent.gameObject;
+	}
 
-	if(Physics.Raycast(transform.position, dir, out hit, distance))
+	void Update () 
 	{
-		isGrounded = true;
+
 	}
-	else
+
+	OnCollisionEnter3D(Collision3D collsion) 
 	{
-		isGrounded = false;
+		if (collision.collider.tag = "Ground") {
+			Player.GetComponent<PlayerMovement>().isGrounded = true;
+		}
 	}
-	
-	return isGrounded;
-}}
+
+	OnCollisionExit3D(Collision3D collision) 
+	{
+		if (collision.collider.tag = "Ground") {
+			Player.GetComponent<PlayerMovement>().isGrounded = false;
+		}
+	}
+
+}
