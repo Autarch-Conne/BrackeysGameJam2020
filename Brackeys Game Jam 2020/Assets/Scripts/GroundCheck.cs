@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GroundCheck : MonoBehaviour
 {
-	public bool isGrounded;
+	
     // Start is called before the first frame update
     void Start()
     {
@@ -12,8 +12,9 @@ public class GroundCheck : MonoBehaviour
     }
 
     // Update is called once per frame
-void GroundChecker()
-{
+bool GroundChecker()
+{	
+	bool isGrounded = false;s
 	RaycastHit hit;
 	float distance = 1f;
 	Vector3 dir = new Vector3(0, -1);
@@ -26,4 +27,6 @@ void GroundChecker()
 	{
 		isGrounded = false;
 	}
+	
+	return isGrounded;
 }}
